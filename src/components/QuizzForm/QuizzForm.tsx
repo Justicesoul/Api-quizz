@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import Button from '../Button/Button';
 import './QuizzForm.scss';
 
 interface QuizzFormProps {
@@ -101,13 +102,7 @@ const QuizzForm: React.FC<QuizzFormProps> = ({ setMainView }) => {
             }}
           />
         </label>
-        <button
-          className="form__submit-button"
-          type="button"
-          onClick={onSendButton}
-        >
-          Send
-        </button>
+        <Button onClick={onSendButton}>Send</Button>
       </>
     </form>
   );

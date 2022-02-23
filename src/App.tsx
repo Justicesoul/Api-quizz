@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { useState } from 'react';
 import './App.scss';
+import Button from './components/Button/Button';
+import DeleteAccountWarning from './components/DeleteAccountWarning/DeleteAccountWarning';
 import Form from './components/Form/Form';
 import Quizzes from './components/Quizzes/Quizzes';
 import QuizzForm from './components/QuizzForm/QuizzForm';
@@ -75,8 +77,8 @@ const App = () => {
           <div className="main__menu">
             <h1>{`Welcome, ${logInEmail}!`}</h1>
             <div>
-              <button onClick={onGetQuizzesButton}>Get quizzes</button>
-              <button onClick={onCreateQuizzButton}>Create a quizz</button>
+              <Button onClick={onGetQuizzesButton}>Get quizzes</Button>
+              <Button onClick={onCreateQuizzButton}>Create a quiz</Button>
             </div>
           </div>
           {mainView === 'main' && (
@@ -86,6 +88,12 @@ const App = () => {
             />
           )}
           {mainView === 'new quizz' && <QuizzForm setMainView={setMainView} />}
+          {mainView === 'delete' && (
+            <DeleteAccountWarning
+              setMainView={setMainView}
+              onDeleteButton={onDeleteButton}
+            />
+          )}
           {mainView === 'quizzes' && <Quizzes quizzData={quizzData} />}
           {mainView === 'loading' && (
             <img
@@ -96,15 +104,14 @@ const App = () => {
           )}
           <div className="main__control">
             {mainView === 'quizzes' && (
-              <button
-                className="quizzes__button"
-                onClick={() => setMainView('main')}
-              >
+              <Button onClick={() => setMainView('main')}>
                 Back to the main page
-              </button>
+              </Button>
             )}
-            <button onClick={onLogOutButton}>Log out</button>
-            <button onClick={onDeleteButton}>Delete account</button>
+            <Button onClick={onLogOutButton}>Log out</Button>
+            <Button onClick={() => setMainView('delete')}>
+              Delete account
+            </Button>
           </div>
         </>
       )}

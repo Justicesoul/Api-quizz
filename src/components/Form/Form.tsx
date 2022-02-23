@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import Button from '../Button/Button';
 import './Form.scss';
 
 interface FormProps {
@@ -72,7 +73,6 @@ const Form: React.FC<FormProps> = ({
         .then((res) => {
           localStorage.setItem('csrf', res.headers._csrf);
           setFormOpen(false);
-          console.log(res);
         })
         .catch((error) => {
           alert(
@@ -146,13 +146,7 @@ const Form: React.FC<FormProps> = ({
                     }}
                   />
                 </label>
-                <button
-                  className="form__submit-button"
-                  type="button"
-                  onClick={onSignUpButton}
-                >
-                  Sign Up
-                </button>
+                <Button onClick={onSignUpButton}>Sign in</Button>
               </>
             )}
             {!signUpOpen && (
@@ -190,13 +184,7 @@ const Form: React.FC<FormProps> = ({
                     }}
                   />
                 </label>
-                <button
-                  className="form__submit-button"
-                  type="button"
-                  onClick={onLogInButton}
-                >
-                  Log In
-                </button>
+                <Button onClick={onLogInButton}>Log In</Button>
               </>
             )}
           </form>

@@ -1,0 +1,14 @@
+.button {
+  background-color: rgba(10, 46, 54, 0.8);
+  color: white;
+  margin: 0 5px;
+  cursor: pointer;
+  border: 1px solid white;
+  padding: 5px 10px;
+  transition: 0.3s;
+  &:hover {
+    border: 1px solid rgba(10, 46, 54, 0.8);
+    color: rgba(10, 46, 54, 0.8);
+    background-color: white;
+  }
+}
